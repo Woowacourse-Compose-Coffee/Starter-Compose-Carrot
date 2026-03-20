@@ -22,6 +22,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     ComposeCarrotTheme {
-
+        HomeScreen()
     }
 }
