@@ -1,17 +1,23 @@
 package com.example.composecarrot
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.OutlinedIconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -83,4 +89,55 @@ private fun HomeHeaderSection(modifier: Modifier = Modifier) {
 @Composable
 private fun HomeHeaderSectionPreview() {
     HomeHeaderSection()
+}
+
+@Composable
+private fun HomeFilterSection(modifier: Modifier = Modifier) {
+    Row() {
+        OutlinedIconButton(
+            onClick = {},
+            border = BorderStroke(width = 1.dp, color = Color(0xFFEAEBEF))
+        ) {
+            Icon(
+                imageVector = Icons.Outlined.Refresh,
+                contentDescription = "새로고침",
+            )
+        }
+
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            item { FilterButton(text = "가락 2동 외 59") }
+            item { FilterButton(text = "가격") }
+            item { FilterButton(text = "카테고리") }
+            item { FilterButton(text = "정확도순") }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun HomeFilterSectionPreview() {
+    HomeFilterSection()
+}
+
+@Composable
+private fun FilterButton(text: String, modifier: Modifier = Modifier) {
+    OutlinedButton(
+        onClick = {},
+        border = BorderStroke(width = 1.dp, color = Color(0xFFEAEBEF)),
+    ) {
+        Text(
+            text = text,
+            fontWeight = FontWeight.W500,
+            fontSize = 14.sp,
+            letterSpacing = (-0.3).sp,
+            color = Color(0xFF212123)
+        )
+        Icon(
+            imageVector = Icons.Default.KeyboardArrowDown,
+            contentDescription = "더보기",
+            modifier = Modifier.size(18.dp)
+        )
+    }
 }
